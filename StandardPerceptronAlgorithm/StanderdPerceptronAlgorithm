@@ -1,0 +1,385 @@
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+
+from sklearn.metrics import confusion_matrix
+
+
+# load data.iris
+def load_file():
+    # open file
+    file = open('iris.data', 'r')
+    content = file.read()
+    data_set = {}
+    # read line by line of file
+    read_line = content.split("\n")
+    # load file to list and dict
+    for line in read_line:
+        line = line.replace('\n', '')
+        # filter string which have no content
+        if line != '':
+            list = line.split(",")[:4]
+            # add three flower four parameters
+            if line.split(",")[4].replace('Iris-', '') in data_set.keys():
+                old_list = data_set[line.split(",")[4].replace('Iris-', '')]
+                old_list['sepal_length'].append(float(list[0]))
+                old_list['sepal_width'].append(float(list[1]))
+                old_list['petal_length'].append(float(list[2]))
+                old_list['petal_width'].append(float(list[3]))
+            else:
+                old_list = {'sepal_length': [float(list[0])], 'sepal_width': [float(list[1])],
+                            'petal_length': [float(list[2])], 'petal_width': [float(list[3])]}
+                data_set[line.split(",")[4].replace('Iris-', '')] = old_list
+
+                # # add three flower four parameters
+                # if line.split(",")[4] in data_set.keys():
+                #     old_list = data_set[line.split(",")[4]]
+                #     old_list.append(list)
+                #     data_set[line.split(",")[4]] = old_list
+                # else:
+                #     old_list = []
+                #     old_list.append(list)
+                #     data_set[line.split(",")[4]] = old_list
+    file.close()
+    return data_set
+
+
+# {'Iris-setosa': [[1,2,3,4],[1,2,3,4]]}
+
+# draw two subplot for sepal and petal by matplotlib
+def drawScatter():
+    dict = load_file()
+    # image size
+    plt.figure(1)
+
+    # first graph position
+    plt.subplot(211)
+    # point all different flower's coordination
+    for key in dict:
+        if key.__eq__('setosa'):
+            plt.scatter(dict[key]['sepal_length'], dict[key]['sepal_width'], marker='x', color='m', label=key, s=20)
+        elif key.__eq__('versicolor'):
+            plt.scatter(dict[key]['sepal_length'], dict[key]['sepal_width'], marker='+', color='c', label=key, s=20)
+        else:
+            plt.scatter(dict[key]['sepal_length'], dict[key]['sepal_width'], marker='o', color='r', label=key, s=10)
+
+    plt.xlabel('Sepal Width')
+    plt.ylabel('Sepal Length')
+    plt.legend(loc="upper right")
+
+    # second graph position
+    plt.subplot(212)
+    for key in dict:
+        if key.__eq__('setosa'):
+            plt.scatter(dict[key]['petal_length'], dict[key]['petal_width'], marker='x', color='m', label=key, s=20)
+        elif key.__eq__('versicolor'):
+            plt.scatter(dict[key]['petal_length'], dict[key]['petal_width'], marker='+', color='c', label=key, s=20)
+        else:
+            plt.scatter(dict[key]['petal_length'], dict[key]['petal_width'], marker='o', color='r', label=key, s=10)
+
+    plt.xlabel('Petal Width')
+    plt.ylabel('Petal Length')
+    plt.legend(loc="upper right")
+    plt.show()
+
+
+#
+class Perceptron():
+
+    # set init weight and bias
+    def __init__(self, input_num):
+        # set init weights 0
+        self.weights = np.zeros(input_num)
+        self.secondWeight = np.zeros(3)
+        # set init bias 0
+        self.bias = 1.
+        self.stri = ''
+
+        self.weights_4 = np.random.normal(size=[4], scale=0.5)
+        self.weights_5 = np.random.normal(size=[4], scale=0.5)
+        self.weights_6 = np.random.normal(size=[4], scale=0.5)
+        self.weights4 = np.transpose(self.weights_4)
+        self.weights5 = np.transpose(self.weights_5)
+        self.weights6 = np.transpose(self.weights_6)
+        self.outputstore = np.zeros((150, 3))
+        self.outputstore2 = np.zeros((150, 3))
+
+    # calculate the dot product for the list of four parameters
+    def predict(self, oneSet, weight):
+        # oneSet[X1,X2,X3] Weights[W1,W2,W3]
+        # x=(X1*W1)+(X2*W2)+(X3*W3)+bias
+        # return sign(x)
+        i = self.sign(np.dot(oneSet, weight) + self.bias)
+        return i
+
+    def get_data(self, iteration):
+        types = self.load_3D_types()
+        data = [list(item) for item in
+                zip(self.perceptron('setosa', iteration, 0.3), self.perceptron('versicolor', iteration, 0.3),
+                    self.perceptron('virginica', iteration, 0.01))]
+        sets = []
+        for i in data:
+            sets.append(np.array([float(i[0]), float(i[1]), float(i[2])]))
+        return types, sets
+
+    # normal perceptron
+    def perceptron(self, flower_name, iteration, learning_rate):
+        sets, types = self.load_iris(flower_name)
+        predict_set = self.training(self.weights, flower_name, iteration, learning_rate, sets, types)
+        return predict_set
+
+    # loop 'iteration' times, each time can train sets to get a suitable weight and bias
+    def training(self, weight, flower_name, iteration, learning_rate, sets, types):
+        count = 1
+        get_accuracy = []
+        get_weights = []
+        get_bias = []
+        get_plot = []
+        index = [i for i in range(0, len(sets))]
+        # train 'iteration' times
+        while iteration > 0:
+
+            # random all index of dataset
+            np.random.shuffle(index)
+            error_count = 0
+            error_function = 0
+            get_predict = []
+            get_types = []
+            for i in index:
+
+                # calculate the predict for recent weight
+                predict_value = self.predict(sets[i], weight)
+
+                # collect data
+                get_predict.append(predict_value)
+                get_types.append(types[i])
+
+                # only when error happened to update weight
+                if predict_value * types[i] != 1:
+                    error_function -= (types[i] * (np.dot(weight, sets[i]) + self.bias))
+                    error_count += 1
+
+                    # update weight
+                    self.update_weight(weight, sets[i], types[i], learning_rate)
+
+            ############################Information###############################
+            # plan whether stop
+            size = len(index)
+            # print(count, error_count)
+            get_plot.append(error_function)
+            if (count >= 500):
+
+                get_accuracy.append((size - error_count) / size)
+                get_weights.append(weight)
+                get_bias.append(self.bias)
+
+                plan_stop = False
+                if len(get_accuracy) == 50:
+                    plan_stop = self.algorithm_flowers(get_accuracy, flower_name)
+                    accuracy_index = get_accuracy.index(max(get_accuracy))
+                    dict_infomation = {"accuracy": max(get_accuracy), "index": accuracy_index,
+                                       "weight": get_weights[accuracy_index],
+                                       "bias": get_bias[accuracy_index]}
+                    get_accuracy = []
+                    get_bias = []
+                    get_weights = []
+
+                if plan_stop:
+                    self.string_information(dict_infomation, flower_name, learning_rate, count, get_plot)
+                    break
+            count += 1
+
+        print(self.stri)
+        print(self.con_mat(get_types, get_predict))
+        self.stri = ''
+        return self.sort_predict(get_predict, index)
+
+    def sort_predict(self, predict_set, index):
+        new_set = [i for i in range(0, len(predict_set))]
+        for i in np.arange(len(predict_set)):
+            if predict_set[index.index(i)] == 1:
+                new_set[i] = float(predict_set[index.index(i)])
+            else:
+                new_set[i] = 0.
+        return new_set
+
+    # print all information about this algorithm
+    def string_information(self, dict_infomation, flower_name, learning_rate, count, get_plot):
+        self.stri += '%s%s%s' % ('\n\n\n================================', flower_name,
+                                 ' Information=================================')
+        self.stri += '%s%s' % ('\nAccuracy :', dict_infomation["accuracy"])
+        self.stri += '%s%s%s%s' % (
+            '\nWeight : ', dict_infomation["weight"], '\nBias: ', dict_infomation["bias"])
+        self.stri += '%s%s' % ('\nIterations :', count)
+        self.stri += '%s%s' % ('\nAverage Error Function: ', np.mean(get_plot))
+        self.stri += '%s%s' % ('\nLearning Rate: ', learning_rate)
+
+        plt.plot(np.arange(count), get_plot)
+        plt.xlabel('Iteration')
+        plt.ylabel('Error Function')
+        plt.show()
+
+    # set stop critizen
+    def algorithm_flowers(self, get_accuracy, flower_name):
+        if flower_name.__eq__('setosa'):
+            if get_accuracy[-1] == 1.0:
+                return True
+        elif flower_name.__eq__('versicolor'):
+            if max(get_accuracy) >= 0.74 and np.mean(get_accuracy) >= 0.65:
+                return True
+        elif flower_name.__eq__('virginica'):
+            if max(get_accuracy) >= 0.98 and np.mean(get_accuracy) >= 0.95:
+                return True
+
+    # print confusion matrix of this algorithm
+    def con_mat(self, get_types, get_predict):
+        return confusion_matrix(y_true=get_types, y_pred=get_predict)
+
+    # activity formula to classify
+    def sign(self, x):
+        return 1 if x > 0 else -1
+
+    # update weight
+    def update_weight(self, weight, oneSet, type, learning_rate):
+        # load origin weight
+        list_weight = weight
+
+        count = 0
+        # update every index of weight
+        for i in oneSet:
+            list_weight[count] += (i * type) * learning_rate
+            count += 1
+            # update bias
+            # self.bias += type * learning_rate
+
+    def load_3D_types(self):
+        dict = load_file()
+        y_list = np.zeros((150, 3))
+        i = 0
+        for key in dict:
+            count = dict[key]['petal_length'].__len__()
+            while count > 0:
+                if key.__eq__('setosa'):
+                    y_list[i][0] = 1.
+                elif key.__eq__('versicolor'):
+                    y_list[i][1] = 1.
+                else:
+                    y_list[i][2] = 1.
+                i += 1
+                count -= 1
+        return y_list
+
+    def load_iris(self, flower_name):
+        dict = load_file()
+        x_list = []
+        y_list = []
+        for key in dict:
+            x_list += [list(item) for item in
+                       zip(dict[key]['sepal_length'], dict[key]['sepal_width'], dict[key]['petal_length'],
+                           dict[key]['petal_width'])]
+            count = dict[key]['petal_length'].__len__()
+            while count > 0:
+                if key.__eq__(flower_name):
+                    y_list.append(1)
+                else:
+                    y_list.append(-1)
+                count -= 1
+        return x_list, y_list
+
+
+class Network():
+    def __init__(self, sets, types):
+        self.sets = sets
+        self.types = types
+        self.record = np.zeros([150,3])
+        self.bias = 1.
+        self.string=''
+    # calculate the dot product for the list of four parameters
+    def predict(self, oneSet, weight):
+        # oneSet[X1,X2,X3] Weights[W1,W2,W3]
+        # x=(X1*W1)+(X2*W2)+(X3*W3)+bias
+        # return sign(x)
+        i = self.sign(np.dot(oneSet, weight) + self.bias)
+        return i
+
+    # update weight
+    def update_weight(self, weight, oneSet, type, learning_rate):
+        # load origin weight
+        list_weight = weight
+
+        count = 0
+        # update every index of weight
+        for i in oneSet:
+            list_weight[count] += (i * type) * learning_rate
+            count += 1
+            # update bias
+            self.bias += type * learning_rate
+
+    # activity formula to classify
+    def sign(self, x):
+        return 1 if x > 0 else 0
+
+    def train(self, learning_rate, num, iteration, weight):
+        index = [i for i in range(0, len(self.sets))]
+        # train 'iteration' times
+        while iteration > 0:
+
+            # random all index of dataset
+            np.random.shuffle(index)
+            get_predict = []
+            get_types = []
+            error_count=0
+            for i in index:
+
+                # calculate the predict for recent weight
+                predict_value = self.predict(sets[i], weight)
+
+                # collect data
+                get_predict.append(predict_value)
+                get_types.append(types[i][num])
+                self.record[i][num]=predict_value
+                # only when error happened to update weight
+                if predict_value == 1:
+                    #when flower data is 0 to increase weight and bias
+                    if self.types[i][num] == 0:
+                        error_count+=1
+                        self.update_weight(weight, self.sets[i], -1, learning_rate)
+                else:
+                    #when other flower data is 1 to decrease weight and bias
+                    if self.types[i][num] == 1:
+                        error_count += 1
+                        self.update_weight(weight, self.sets[i], 1, learning_rate)
+            iteration -= 1
+        print(self.con_mat(get_types,get_predict))
+        print((150-error_count)/150)
+        return weight,self.bias
+
+        # print confusion matrix of this algorithm
+
+    def con_mat(self, get_types, get_predict):
+        return confusion_matrix(y_true=get_types, y_pred=get_predict)
+
+    def get_info(self,firstWeight,secondWeight,thirdWeight,firstBias,secondBias,thirdBias):
+        count = 0
+        for i in range(150):
+            if self.record[i][0] == self.types[i][0] and self.record[i][1] == self.types[i][1] and self.record[i][2] == self.types[i][2]:
+                count += 1
+        get_accuracy = (count) / 150
+        self.string += '%s%s' % ('\nAccuracy :', get_accuracy)
+        self.string += '%s%s%s%s' % ('\nSetosa Weight :', firstWeight,'\nSetosa Bias :',firstBias)
+        self.string += '%s%s%s%s' % ('\nVersicolor Weight :', secondWeight,'\nVersicolor Bias :',secondBias)
+        self.string += '%s%s%s%s' % ('\nVirginica Weight :', thirdWeight,'\nVirginica Bias :',thirdBias)
+        return self.string
+if __name__ == '__main__':
+    drawScatter()
+    p = Perceptron(4)
+    types, sets = p.get_data(1000)
+    ne = Network(sets, types)
+    firstWeight=np.zeros(3)
+    secondWeight = np.zeros(3)
+    thirdWeight = np.zeros(3)
+    firstWeight,firstBias=ne.train(0.3, 0, 1000, firstWeight)
+    secondWeight,secondBias=ne.train(0.3, 1, 1000, secondWeight)
+    thirdWeight,thirdBias=ne.train(0.01, 2, 1000, thirdWeight)
+    print(ne.get_info(firstWeight,secondWeight,thirdWeight,firstBias,secondBias,thirdBias))
