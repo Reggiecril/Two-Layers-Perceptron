@@ -96,14 +96,7 @@ class Perceptron():
         self.bias = 1.
         self.stri = ''
 
-        self.weights_4 = np.random.normal(size=[4], scale=0.5)
-        self.weights_5 = np.random.normal(size=[4], scale=0.5)
-        self.weights_6 = np.random.normal(size=[4], scale=0.5)
-        self.weights4 = np.transpose(self.weights_4)
-        self.weights5 = np.transpose(self.weights_5)
-        self.weights6 = np.transpose(self.weights_6)
-        self.outputstore = np.zeros((150, 3))
-        self.outputstore2 = np.zeros((150, 3))
+
 
     # calculate the dot product for the list of four parameters
     def predict(self, oneSet, weight):

@@ -5,6 +5,14 @@ public class FlowerBean {
     private double PWidth;
     private String FlowerName;
 
+    public FlowerBean(double SLength, double SWidth, double PLength, double PWidth, String flowerName) {
+        this.SLength = SLength;
+        this.SWidth = SWidth;
+        this.PLength = PLength;
+        this.PWidth = PWidth;
+        FlowerName = flowerName;
+    }
+
     public double getSLength() {
         return SLength;
     }

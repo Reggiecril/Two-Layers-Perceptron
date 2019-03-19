@@ -1,3 +1,5 @@
+import com.sun.tools.javac.comp.Flow;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,17 +10,27 @@ public class FileToObject {
     //sepal_length sepal_width petal_length petal_width
     private ArrayList<String> readFile(String filename){
         ArrayList<String> list=new ArrayList<>();
-
         try {
-            BufferedReader in = new BufferedReader(new FileReader(filename));
+            BufferedReader in = new BufferedReader(new FileReader("src/"+filename));
             String str;
             while ((str = in.readLine()) != null) {
+                if (str.equals("")) break;
                 list.add(str);
             }
-            System.out.println(str);
         } catch (IOException e) {
         }
         return list;
     }
-    public
+    private ArrayList<FlowerBean> flowerObject(ArrayList<String> list){
+        ArrayList<FlowerBean> flowerBeans=new ArrayList<>();
+        for(String str:list){
+            String[] flowerString = str.split(",");
+            flowerBeans.add(new FlowerBean(Double.parseDouble(flowerString[0]),Double.parseDouble(flowerString[1]),Double.parseDouble(flowerString[2]),Double.parseDouble(flowerString[3]),flowerString[4]));
+
+        }
+        return flowerBeans;
+    }
+    public ArrayList<FlowerBean> getFlower(){
+        return flowerObject(readFile("iris.data"));
+    }
 }
