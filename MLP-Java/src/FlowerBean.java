@@ -4,7 +4,7 @@ public class FlowerBean {
     private double PLength;
     private double PWidth;
     private String FlowerName;
-
+    private int type;
     public FlowerBean(double SLength, double SWidth, double PLength, double PWidth, String flowerName) {
         this.SLength = SLength;
         this.SWidth = SWidth;
@@ -53,6 +53,14 @@ public class FlowerBean {
         FlowerName = flowerName;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "FlowerBean{" +
@@ -61,6 +69,7 @@ public class FlowerBean {
                 ", PLength=" + PLength +
                 ", PWidth=" + PWidth +
                 ", FlowerName='" + FlowerName + '\'' +
+                ", type=" + type +
                 '}';
     }
 }
