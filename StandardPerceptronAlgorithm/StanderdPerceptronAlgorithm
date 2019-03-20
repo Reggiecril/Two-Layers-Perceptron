@@ -97,7 +97,6 @@ class Perceptron():
         self.stri = ''
 
 
-
     # calculate the dot product for the list of four parameters
     def predict(self, oneSet, weight):
         # oneSet[X1,X2,X3] Weights[W1,W2,W3]

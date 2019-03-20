@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46dfcab1-b822-4445-b124-1a05006b3788" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../MLP-Java/src/FirstPerceptron.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/src/FileToObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/src/FileToObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/src/FlowerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/src/FlowerBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StanderdPerceptronAlgorithm" beforeDir="false" afterPath="$PROJECT_DIR$/StanderdPerceptronAlgorithm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="153" column="36" lean-forward="true" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="36" />
+            <state relative-caret-position="274">
+              <caret line="279" column="29" lean-forward="true" selection-start-line="279" selection-start-column="29" selection-end-line="279" selection-end-column="29" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -85,7 +85,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="797" />
@@ -96,6 +96,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,7 +108,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -243,18 +243,19 @@
       <option name="presentableId" value="Default" />
       <updated>1552012547578</updated>
       <workItem from="1552012549793" duration="130941000" />
-      <workItem from="1553029314185" duration="809000" />
+      <workItem from="1553029314185" duration="2354000" />
+      <workItem from="1553101760151" duration="889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131750000" />
+    <option name="totallyTimeSpent" value="134184000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="795" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -268,7 +269,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32859176" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -286,7 +287,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/StanderdPerceptronAlgorithm</url>
-          <line>328</line>
+          <line>327</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
@@ -362,8 +363,8 @@
     <entry file="file://$PROJECT_DIR$/zuizhongyiti.py" />
     <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="153" column="36" lean-forward="true" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="36" />
+        <state relative-caret-position="274">
+          <caret line="279" column="29" lean-forward="true" selection-start-line="279" selection-start-column="29" selection-end-line="279" selection-end-column="29" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
