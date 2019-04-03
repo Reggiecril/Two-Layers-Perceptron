@@ -69,7 +69,7 @@ public class FlowerBean {
                 ", PLength=" + PLength +
                 ", PWidth=" + PWidth +
                 ", FlowerName='" + FlowerName + '\'' +
-                ", type=" + type +
+                ", Type=" + type +
                 '}';
     }
 }
