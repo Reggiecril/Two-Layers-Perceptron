@@ -17,9 +17,8 @@ public class FirstPerceptron {
      * @return
      */
     private int getPredict(FlowerBean fb, double[] weight) {
-        double dot = fb.getPLength() * weight[0] + fb.getPWidth() * weight[1] + fb.getSLength() * weight[2] + fb.getSWidth() * weight[3];
+        double dot = fb.getSLength() * weight[0] + fb.getSWidth() * weight[1] + fb.getPLength() * weight[2] + fb.getPWidth() * weight[3];
         return sign(dot + bias);
-
     }
 
     public void training(String flowerName, int iteration, double learning_rate){
@@ -29,10 +28,28 @@ public class FirstPerceptron {
             for(int i=0;i<allFlower.size();i++)
                 index[i]=i;
             shuffleArray(index);
-            System.out.println(index);
+            for (int i=0;i<index.length;i++){
+                int predict=getPredict(allFlower.get(i),weights);
+                if (predict * allFlower.get(i).getType() != 1){
+                    updateWeight(allFlower.get(i),allFlower.get(i).getType(),learning_rate);
+                }
+            }
+            System.out.println(Arrays.toString(weights)+", "+iteration);
             iteration--;
         }
     }
+    private void updateWeight(FlowerBean fb,int type,double learningRate){
+        weights[0]+=(fb.getSLength()*type)*learningRate;
+        weights[1]+=(fb.getSWidth()*type)*learningRate;
+        weights[2]+=(fb.getPLength()*type)*learningRate;
+        weights[3]+=(fb.getPWidth()*type)*learningRate;
+        bias += type * learningRate;
+    }
+
+    /**
+     * shuffle index
+     * @param array
+     */
     private static void shuffleArray(int[] array)
     {
         int index, temp;
@@ -95,7 +112,7 @@ public class FirstPerceptron {
 
     public static void main(String[] args) {
         FirstPerceptron fp = new FirstPerceptron(FileToObject.getFlower());
-        fp.training("Iris-setosa",1,2.1);
+        fp.training("Iris-setosa",10,0.3);
     }
 }
 

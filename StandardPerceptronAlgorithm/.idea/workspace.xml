@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="46dfcab1-b822-4445-b124-1a05006b3788" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/out/production/MLP-Java/FirstPerceptron.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/out/production/MLP-Java/FirstPerceptron.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/out/production/MLP-Java/FlowerBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/out/production/MLP-Java/FlowerBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/src/FirstPerceptron.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/src/FirstPerceptron.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/src/FlowerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/src/FlowerBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-217">
-              <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+            <state relative-caret-position="-1116">
+              <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -240,12 +235,12 @@
       <workItem from="1553101760151" duration="2520000" />
       <workItem from="1554098624231" duration="10000" />
       <workItem from="1554123665385" duration="322000" />
-      <workItem from="1554277423575" duration="910000" />
+      <workItem from="1554277423575" duration="2953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137057000" />
+    <option name="totallyTimeSpent" value="139100000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -265,12 +260,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32765958" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.4989429" visible="true" weight="0.23748212" />
+      <window_info active="true" anchor="right" id="SciView" order="3" sideWeight="0.4989429" visible="true" weight="0.23748212" />
       <window_info anchor="right" x="0" y="0" width="310" height="597" id="Documentation" order="4" sideWeight="0.5010571" side_tool="true" weight="0.34978542" />
       <window_info anchor="right" id="Database" order="5" weight="0.3297568" />
     </layout>
@@ -359,8 +354,8 @@
     <entry file="file://$PROJECT_DIR$/zuizhongyiti.py" />
     <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+        <state relative-caret-position="-1116">
+          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
