@@ -53,6 +53,7 @@ public class FirstPerceptron {
                     System.out.println(flowerName.replace("Iris-","") + " got " + accuracy * 100 + "% accuracy which weight is " + Arrays.toString(weights) + " and bias is " + bias+" at iteration "+count);
                     break;
                 }
+
             }
             count++;
             iteration--;
@@ -66,7 +67,7 @@ public class FirstPerceptron {
         } else if (flowerName.equals("Iris-versicolor")) {
             return accuracy >= 0.75 ? true : false;
         } else if (flowerName.equals("Iris-virginica")) {
-            return accuracy >= 0.975 ? true : false;
+            return accuracy >= 0.95 ? true : false;
         }
         return true;
     }
