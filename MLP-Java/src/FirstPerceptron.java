@@ -133,20 +133,20 @@ public class FirstPerceptron {
      * @return
      */
     public static int[][] getAllTypes(){
-        int[][] types=new int[3][150];
-        for(int i=0;i<types[0].length;i++){
+        int[][] types=new int[150][3];
+        for(int i=0;i<types.length;i++){
             if (i<50){
-                types[0][i]=1;
-                types[1][i]=0;
-                types[2][i]=0;
+                types[i][0]=1;
+                types[i][1]=0;
+                types[i][2]=0;
             }else if(i>49 && i<100){
-                types[0][i]=0;
-                types[1][i]=1;
-                types[2][i]=0;
+                types[i][0]=0;
+                types[i][1]=1;
+                types[i][2]=0;
             }else {
-                types[0][i]=0;
-                types[1][i]=0;
-                types[2][i]=1;
+                types[i][0]=0;
+                types[i][1]=0;
+                types[i][2]=1;
             }
         }
         return types;
