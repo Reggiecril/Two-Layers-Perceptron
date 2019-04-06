@@ -128,35 +128,35 @@ public class FirstPerceptron {
         }
     }
 
-    public double getBias() {
-        return bias;
-    }
-
-    public void setBias(double bias) {
-        this.bias = bias;
-    }
-
-    public double[] getWeights() {
-        return weights;
-    }
-
-    public void setWeights(double[] weights) {
-        this.weights = weights;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
+    /**
+     * collect all types
+     * @return
+     */
+    public static int[][] getAllTypes(){
+        int[][] types=new int[3][150];
+        for(int i=0;i<types[0].length;i++){
+            if (i<50){
+                types[0][i]=1;
+                types[1][i]=0;
+                types[2][i]=0;
+            }else if(i>49 && i<100){
+                types[0][i]=0;
+                types[1][i]=1;
+                types[2][i]=0;
+            }else {
+                types[0][i]=0;
+                types[1][i]=0;
+                types[2][i]=1;
+            }
+        }
+        return types;
     }
 
     public static void main(String[] args) {
-        System.out.println(FirstPerceptron.training("Iris-setosa", 1500, 0.3));
-        System.out.println(FirstPerceptron.training("Iris-versicolor", 1500, 0.3));
-        System.out.println(FirstPerceptron.training("Iris-virginica", 1500, 0.3));
-
+//        System.out.println(FirstPerceptron.training("Iris-setosa", 1500, 0.3));
+//        System.out.println(FirstPerceptron.training("Iris-versicolor", 1500, 0.3));
+//        System.out.println(FirstPerceptron.training("Iris-virginica", 1500, 0.01));
+        System.out.println(FirstPerceptron.getAllTypes());
 
     }
 }
