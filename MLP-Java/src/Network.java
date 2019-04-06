@@ -63,7 +63,7 @@ public class Network {
      * @return
      */
     private int sign(double x) {
-        return x > 0 ? 1 : -1;
+        return x > 0 ? 1 : 0;
     }
     /**
      * update weight
@@ -117,8 +117,23 @@ public class Network {
 //        System.out.println(FirstPerceptron.training("Iris-setosa", 1500, 0.3));
 //        System.out.println(FirstPerceptron.training("Iris-versicolor", 1500, 0.3));
 //        System.out.println(FirstPerceptron.training("Iris-virginica", 1500, 0.01));
-        Network network=new Network();
-        System.out.println(Arrays.toString(network.training(1,1000,0.3)));
+        Network network1=new Network();
+        int[] setosa=network1.training(0,1000,0.3);
+        Network network2=new Network();
+        int[] versicolor=network1.training(1,1000,0.3);
+        Network network3=new Network();
+        int[] virginica=network1.training(2,1000,0.3);
+        int[][] types=FirstPerceptron.getAllTypes();
+
+        double count=0.0;
+        for (int i=0;i<150;i++){
+            if (setosa[i]==types[i][0] && versicolor[i]==types[i][1] && virginica[i]==types[i][2])
+                count+=1.0;
+        }
+        System.out.println(count);
+        double n=count/150;
+        System.out.println("Accuracy: "+n);
+
 
     }
 }

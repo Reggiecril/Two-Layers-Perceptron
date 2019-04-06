@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="46dfcab1-b822-4445-b124-1a05006b3788" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MLP-Java/src/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MLP-Java/src/Network.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +34,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="966">
+            <state relative-caret-position="33">
               <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -236,12 +235,12 @@
       <workItem from="1553101760151" duration="2520000" />
       <workItem from="1554098624231" duration="10000" />
       <workItem from="1554123665385" duration="322000" />
-      <workItem from="1554277423575" duration="10102000" />
+      <workItem from="1554277423575" duration="10511000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146249000" />
+    <option name="totallyTimeSpent" value="146658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -355,7 +354,7 @@
     <entry file="file://$PROJECT_DIR$/zuizhongyiti.py" />
     <entry file="file://$PROJECT_DIR$/StanderdPerceptronAlgorithm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
+        <state relative-caret-position="33">
           <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
